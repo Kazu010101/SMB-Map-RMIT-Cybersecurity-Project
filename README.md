@@ -3,9 +3,9 @@ One of the Red teaming activities for my [RMIT Cybersecurity Project](https://gi
 
 ## Objective
 
-- Weaponization: Install SMB MAP on Kali Linux
-- Find asset
-- Exfiltrate the asset
+- Weaponization: install smbclient on Kali Linux
+- Discover shared SMB folders with smbclient or smbmap
+- Exfiltrate any valuable assets found
 
 ## The Scenario
 
