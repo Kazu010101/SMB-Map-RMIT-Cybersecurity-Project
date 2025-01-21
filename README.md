@@ -25,7 +25,7 @@ Since the target has SMB service enabled, the appropriate 'weapon' to exploit th
 - sudo apt-upgrade
 - sudo apt-get install smbclient cifs-utils
 
-## SMB Folder Detection Method 1: smbclient -L
+## SMB Folder Discovery Method 1: smbclient -L
 
 - smbclient -L //192.168.1.254 -U Client1
 - Enter Client1 password
@@ -34,7 +34,7 @@ Since the target has SMB service enabled, the appropriate 'weapon' to exploit th
 
 *Figure 2: By default, this command executes the connection from Kali using SMB1 which makes the connection attempt failed. However, the real purpose for this intentionally failed attempt is to detect shared folders name in Windows 10 VM.  In this case, there are two folders named "Office Shared Folder" and "SMB-Office-Folder". Folder's name is a crucial information for the attacker in order to carry out the next attack.* 
 
-## SMB Folder Detection Method 2: SMBMAP -H 192.168.1.254 -u Client1 -p admin123
+## SMB Folder Discovery Method 2: SMBMAP -H 192.168.1.254 -u Client1 -p admin123
 
 ![smb6](https://github.com/user-attachments/assets/b7baf4e3-4346-41f4-b082-434feafb7545)
 
