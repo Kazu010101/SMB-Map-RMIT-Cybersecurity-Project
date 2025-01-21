@@ -22,8 +22,7 @@ At this stage, the attacker has gained information from [nmap scan](https://gith
 
 Since the target has SMB service enabled, the appropriate 'weapon' to exploit this vulnerability is to instal smbclient on Kali with these commands:
 
-- sudo apt-update
-- sudo apt-upgrade
+- sudo apt update && sudo apt upgrade -y
 - sudo apt-get install smbclient cifs-utils
 
 ## Step 2a: Discover SMB Folder using smbclient -L
