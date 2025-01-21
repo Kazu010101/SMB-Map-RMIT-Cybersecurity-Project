@@ -6,6 +6,7 @@ One of the Red teaming activities for my [RMIT Cybersecurity Project](https://gi
 - Weaponization: install smbclient on Kali Linux
 - Discover shared SMB folders with smbclient or smbmap
 - Exfiltrate any valuable assets found
+- Verify successful data exfiltration
 
 ## The Scenario
 
@@ -17,7 +18,7 @@ At this stage, the attacker has gained information from [nmap scan](https://gith
 
 *Figure 2: We still use the same setup from my [Nmap Scan Lab](https://github.com/Kazu010101/Nmap-Scan-RMIT-Cybersecurity-Project/blob/main/README.md), in which 2 Virtual Machines were used for the victim in Windows 10 (192.168.1.254 /24) and the attacker in Kali Linux (192.168.1.33 /24). Both network setting is internal mode.* 
 
-## Weaponization: Install smbclient on Kali
+## Step 1: Install smbclient on Kali (Weaponization)
 
 Since the target has SMB service enabled, the appropriate 'weapon' to exploit this vulnerability is to instal smbclient on Kali with these commands:
 
@@ -25,7 +26,7 @@ Since the target has SMB service enabled, the appropriate 'weapon' to exploit th
 - sudo apt-upgrade
 - sudo apt-get install smbclient cifs-utils
 
-## SMB Folder Discovery Method 1: smbclient -L
+## Step 2a: Discover SMB Folder using smbclient -L
 
 - smbclient -L //192.168.1.254 -U Client1
 - Enter Client1 password
@@ -34,13 +35,13 @@ Since the target has SMB service enabled, the appropriate 'weapon' to exploit th
 
 *Figure 2: By default, this command executes the connection from Kali using SMB1 which makes the connection attempt failed. However, the real purpose for this intentionally failed attempt is to detect shared folders name in Windows 10 VM.  In this case, there are two folders named "Office Shared Folder" and "SMB-Office-Folder". Folder's name is a crucial information for the attacker in order to carry out the next attack.* 
 
-## SMB Folder Discovery Method 2: SMBMAP -H 192.168.1.254 -u Client1 -p admin123
+## Step 2b: Discover SMB Folder using smbmap -H 192.168.1.254 -u Client1 -p admin123
 
 ![smb6](https://github.com/user-attachments/assets/b7baf4e3-4346-41f4-b082-434feafb7545)
 
 *Figure 3: Alternatively, smbmap tool can be used to enumerate and map SMB shares on a target server. It helps identify shared directories and their access permissions. Notice that both methods require target's credentials to be successful.* 
 
-## Data Exfiltration
+## Step3: Exfiltrate Data
 
 - smbclient "//192.168.1.254/Office Shared Folder" -U Client1 --option='client min protocol=SMB2'
 - Enter Client1 password
@@ -54,7 +55,7 @@ Since the target has SMB service enabled, the appropriate 'weapon' to exploit th
 
 *Figure 5: Now the attacker could attempt to exfiltrate the data from Windows 10 to Kali successfully.*
 
-## Verification of Data Exfiltration
+## Step4: Verify Data Exfiltration
 
 Exit the smb session, and run ls and cat command on Kali.
 
