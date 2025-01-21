@@ -9,7 +9,7 @@ One of the Red teaming activities for my [RMIT Cybersecurity Project](https://gi
 
 ## The Scenario
 
-At this stage, the attacker has gained information from nmap scan about the existance of SMB service in one of the hosts. Also, the Zphisher phishing attack against one of the employees allowed the attacker to figure out the username and password.
+At this stage, the attacker has gained information from [nmap scan](https://github.com/Kazu010101/Nmap-Scan-RMIT-Cybersecurity-Project/blob/main/README.md) about the existance of SMB service in one of the hosts. Also, the [Zphisher phishing attack](https://github.com/Kazu010101/Zphisher-RMIT-Cybersecurity-Project) against one of the employees allowed the attacker to obtain the username and password for logging into Windows 10.
 
 ## Lab Setup
 
